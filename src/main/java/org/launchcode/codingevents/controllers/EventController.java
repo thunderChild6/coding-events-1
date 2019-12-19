@@ -40,6 +40,23 @@ public class EventController {
         return "redirect:";
     }
 
+    @GetMapping("delete")
+    public String displayDeleteEventForm(Model model) {
+        model.addAttribute("title", "Delete Events");
+        model.addAttribute("events", EventData.getAll());
+        return "events/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
+        if (eventIds != null) {
+            for (int id : eventIds) {
+                EventData.remove(id);
+            }
+        }
+        return "redirect:";
+    }
+
     //Ch 11 Exercises
 //    private static HashMap<String, String> events = new HashMap<>();
 //
