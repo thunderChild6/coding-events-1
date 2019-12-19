@@ -9,15 +9,27 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Info</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event.key}"></td>
-        <td th:text="${event.value}"></td>
-<!--        <td>Third Column</td>-->
+        <td th:text="${event.name}"></td>
     </tr>
 </table>
+
+<!--//Ch 11 exercises-->
+<!--<table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Info</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tr th:each="event : ${events}">-->
+<!--        <td th:text="${event.key}"></td>-->
+<!--        <td th:text="${event.value}"></td>-->
+<!--        &lt;!&ndash;        <td>Third Column</td>&ndash;&gt;-->
+<!--    </tr>-->
+<!--</table>-->
 
 </body>
 </html>
