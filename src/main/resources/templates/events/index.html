@@ -9,10 +9,13 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Info</th>
         </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.key}"></td>
+        <td th:text="${event.value}"></td>
+<!--        <td>Third Column</td>-->
     </tr>
 </table>
 
