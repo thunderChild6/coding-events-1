@@ -27,12 +27,14 @@ public class EventController {
     @GetMapping("create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
+        System.out.println("Create method reached--get");
         return "events/create";
     }
 
     @PostMapping("create")
     public String processCreateEventForm(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
+        System.out.println("create method reached--post");
         return "redirect:";
     }
 
@@ -40,6 +42,7 @@ public class EventController {
     public String displayDeleteEventForm(Model model) {
         model.addAttribute("title", "Delete Events");
         model.addAttribute("events", EventData.getAll());
+        System.out.println("delete method reached--get");
         return "events/delete";
     }
 
@@ -50,6 +53,23 @@ public class EventController {
                 EventData.remove(id);
             }
         }
+        System.out.println("delete method reached--post");
+        return "redirect:";
+    }
+
+    @GetMapping("edit/{eventId}")
+    public String displayEditForm(Model model, @PathVariable int eventId) {
+        model.addAttribute("title", "Edit Event " + EventData.getById(eventId).getName() + " (id=" + eventId + ")");
+        model.addAttribute("events", EventData.getById(eventId));
+        System.out.println("displayEditForm method reached");
+        return "events/edit";
+    }
+
+    @PostMapping("edit")
+    public String processEditForm(int eventId, String name, String description) {
+        System.out.println("processEditForm method reached");
+        EventData.getById(eventId).setName(name);
+        EventData.getById(eventId).setDescription(description);
         return "redirect:";
     }
 
